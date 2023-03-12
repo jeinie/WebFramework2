@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="catId" class="kr.ac.hansung.cse.animals.Cat">
+        <qualifier value="qf_cat"/>
+        <property name="myName" value="poodle"/>
+    </bean>
+
+    <bean id="dogId" class="kr.ac.hansung.cse.animals.Dog">
+        <qualifier value="qf_dog"/>
+        <property name="myName" value="bella"/>
+    </bean>
+
+    <bean id="petOwnerId" class="kr.ac.hansung.cse.animals.PetOwner">
+        <!-- 생성자 인자에 dogId 를 넣는다 -->
+<!--        <constructor-arg ref="catId"/>-->
+    </bean>
+
+    <context:annotation-config/>
+</beans>
