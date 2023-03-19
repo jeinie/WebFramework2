@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-    <c:forEach var="offer" items="${offers}">
+    <c:forEach var="offer" items="${id_offers}">
         <p><c:out value="${offer}"> </c:out> </p>
     </c:forEach>
 </body>
