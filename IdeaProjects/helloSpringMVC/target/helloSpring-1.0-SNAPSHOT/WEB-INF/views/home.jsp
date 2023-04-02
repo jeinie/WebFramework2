@@ -7,10 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-    <a href="${pageContext.request.contextPath}/offers">Show current offers</a>
-  </body>
+</head>
+<body>
+    <p><a href="${pageContext.request.contextPath}/offers">Show current offers</a></p>
+    <p><a href="${pageContext.request.contextPath}/createoffer">Add a new offer</a></p>
+</body>
 </html>
