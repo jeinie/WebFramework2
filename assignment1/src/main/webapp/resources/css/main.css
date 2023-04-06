@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.container-wrapper {
+	margin-top: 80px;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.table th {
+    text-align: center;    
+    overflow: hidden;
+}
+
+.table td {
+    text-align: center;   
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-group {
+    padding-bottom: 20px; /* 아래쪽에 20px 패딩 추가 */
+}
+
+.navbar-brand {
+    margin-left: 20px; /* 여백 크기 조절 */
+}
