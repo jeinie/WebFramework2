@@ -9,7 +9,7 @@
         <property name="connection.url">
             jdbc:mysql://localhost:3306/hibernate-testdb?useSSL=false&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">1234</property>
+        <property name="connection.password">Capstone1820!</property>
 
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
@@ -17,5 +17,6 @@
         <property name="hbm2ddl.auto">create</property>
 
         <mapping class="kr.ac.hansung.Product" />
+        <mapping class="kr.ac.hansung.Category"/>
     </session-factory>
 </hibernate-configuration>
