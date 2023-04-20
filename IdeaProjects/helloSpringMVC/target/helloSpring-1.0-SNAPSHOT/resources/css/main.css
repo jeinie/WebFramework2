@@ -30,3 +30,9 @@ input[type=submit] {
     width: 50%;
     margin: 0 auto;
 }
+
+.error {
+    font-size: small;
+    color: red;
+    margin-left: 10px;
+}
