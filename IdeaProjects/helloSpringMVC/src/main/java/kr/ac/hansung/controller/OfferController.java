@@ -23,7 +23,7 @@ public class OfferController {
 
     @GetMapping("/offers")
     public String showOffers(Model model) {
-        List<Offer> offers = offerService.getCurrent();
+        List<Offer> offers = offerService.getOffers();
         model.addAttribute("id_offers", offers);
 
         return "offers";
@@ -53,7 +53,7 @@ public class OfferController {
             return "createoffer";
         }
 
-        offerService.insert(offer);
+        offerService.insertOffer(offer);
 
         return "offercreated";
     }
