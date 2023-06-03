@@ -5,13 +5,16 @@ import kr.ac.hansung.cse.hellospringdatajpa.repository.ProductRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest // integration test (test 용 spring IoC Container <- beans)
@@ -45,5 +48,47 @@ class HelloSpringDataJpaApplicationTests {
 
         Product newProduct = productRepository.findById(savedProduct.getId()).get();
         assertNotNull("OLED TV", newProduct.getName()); // 기댓값과 실제 DB 에 저장되어 있는 값이 일치한지 테스트
+    }
+
+    @Test
+    @DisplayName("Test4: findByName")
+    public void findByName() {
+        Product product = productRepository.findByName("Galaxy S21");
+        assertEquals("Galaxy S21", product.getName());
+    }
+
+    @Test
+    @DisplayName("Test5: findByNameContainingWithPaging")
+    public void findByNameContainingWithPaging() {
+        Pageable pageable = PageRequest.of(0, 3);
+        List<Product> productList = productRepository.findByNameContaining("MacBook", pageable);
+
+        System.out.println("====findByNameContainingWithPaging: MacBook====");
+        for (Product product: productList) {
+            System.out.println("-->" + product.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("Test6: findByNameContainingWithPagingAndSort")
+    public void findByNameContainingWithPagingAndSort() {
+        Pageable pageable = PageRequest.of(0, 3, Sort.Direction.DESC, "id");
+        List<Product> productList = productRepository.findByNameContaining("Galaxy", pageable);
+        System.out.println("===findByNameContainingWithPagingAndSort: Galaxy===");
+
+        for (Product product: productList) {
+            System.out.println("-->" + product.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("Test7: searchByNameUsingQuery")
+    public void searchByName() {
+        List<Product> productList = productRepository.searchByName("Air");
+
+        System.out.println("====searchByNameUsingQuery: Air====");
+        for (Product product: productList) {
+            System.out.println("-->" + product.toString());
+        }
     }
 }
